@@ -37,7 +37,7 @@ export default function Hero() {
   }, [displayed, typing, index]);
 
   return (
-    <section className="relative bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-600 text-white py-28">
+    <section className="relative bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-600 text-white py-28" id="hero">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <div className="bg-white bg-opacity-5 backdrop-blur-md p-10 rounded-xl shadow-2xl border border-white/10 transition-all">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
