@@ -44,10 +44,12 @@ export default function Hero() {
             Rayavarapu Praneeth
           </h1>
 
-          <p className="text-xl md:text-2xl font-medium h-10 mb-6 text-white">
-            <span className="border-r-2 border-white pr-2 animate-pulse">{displayed}</span>
-            <span className="blinking-cursor">|</span>
-          </p>
+          <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium h-10 mb-6 text-white">
+  <span className="border-r-2 border-white pr-2 animate-pulse">{displayed}</span>
+  <span className="blinking-cursor">|</span>
+  <span className="walk text-2xl">🚶‍♂️</span>
+</div>
+
 
           <p className="max-w-3xl mx-auto text-lg text-gray-200 mb-10">
             Passionate developer with 2 years of experience building modern web applications using Angular, React, Node.js, and ASP.NET Core. I love creating impactful software and delivering great user experiences.
@@ -102,14 +104,25 @@ export default function Hero() {
       {/* Cursor blinking effect */}
       <style>
         {`
-          .blinking-cursor {
-            animation: blink 1s infinite;
-          }
-          @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-          }
-        `}
+    .blinking-cursor {
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .walk {
+      display: inline-block;
+      animation: walkAnimation 2s infinite linear;
+    }
+
+    @keyframes walkAnimation {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+      100% { transform: translateX(0); }
+    }
+  `}
       </style>
     </section>
   );

@@ -1,5 +1,7 @@
 // src/components/DarkModeToggle.jsx
 import { useEffect, useState } from "react";
+import Switch from "react-switch";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function DarkModeToggle() {
   const [dark, setDark] = useState(() =>
@@ -18,13 +20,22 @@ export default function DarkModeToggle() {
   }, [dark]);
 
   return (
-    <div className="fixed top-4 right-4 z-50">
-      <button
-        onClick={() => setDark(!dark)}
-        className="bg-gray-200 dark:bg-gray-700 text-sm px-4 py-2 rounded shadow hover:scale-105 transition"
-      >
-        {dark ? "🌞 Light" : "🌙 Dark"}
-      </button>
+    <div className="flex items-center gap-2">
+      <FaSun className="text-yellow-400" />
+      <Switch
+        onChange={() => setDark(!dark)}
+        checked={dark}
+        offColor="#facc15"
+        onColor="#4b5563"
+        onHandleColor="#fff"
+        offHandleColor="#000"
+        uncheckedIcon={false}
+        checkedIcon={false}
+        height={24}
+        width={48}
+        handleDiameter={20}
+      />
+      <FaMoon className="text-blue-200" />
     </div>
   );
 }
