@@ -1,11 +1,18 @@
 import { useRef, useState } from "react";
 import emailjs from "emailjs-com";
-import { FaUser, FaEnvelope, FaCommentDots, FaPaperPlane, FaTimes } from "react-icons/fa";
+import {
+  FaUser,
+  FaEnvelope,
+  FaCommentDots,
+  FaPaperPlane,
+  FaTimes,
+} from "react-icons/fa";
 
 export default function Contact() {
   const form = useRef<HTMLFormElement | null>(null);
   const [status, setStatus] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [confetti, setConfetti] = useState(false);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,6 +30,14 @@ export default function Contact() {
       .then(() => {
         setStatus("✅ Message sent successfully!");
         form.current?.reset();
+        setConfetti(true);
+
+        // Auto-close after 3s
+        setTimeout(() => {
+          setShowForm(false);
+          setConfetti(false);
+          setStatus("");
+        }, 3000);
       })
       .catch(() => {
         setStatus("❌ Failed to send. Try again.");
@@ -34,10 +49,17 @@ export default function Contact() {
       id="contact"
       className="py-20 bg-gradient-to-r from-sky-50 via-white to-purple-50 dark:from-gray-800 dark:to-gray-900 transition-all"
     >
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-6 relative">
         <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-10">
           Contact Me
         </h2>
+
+        {/* Confetti emoji animation */}
+        {confetti && (
+          <div className="absolute inset-0 flex justify-center items-center pointer-events-none text-5xl animate-bounce">
+            🎉✨🎊
+          </div>
+        )}
 
         {!showForm ? (
           <div className="text-center">
@@ -50,7 +72,6 @@ export default function Contact() {
           </div>
         ) : (
           <div className="relative shadow-2xl rounded-lg bg-white dark:bg-gray-800 border dark:border-gray-700 p-6 animate-fade-in">
-            {/* Close Button */}
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition text-xl"
@@ -101,18 +122,22 @@ export default function Contact() {
                 >
                   📤 Send Message
                 </button>
+
                 {status && (
-                  <p
-                    className={`mt-4 text-sm ${
-                      status.includes("✅")
-                        ? "text-green-600 dark:text-green-400"
-                        : status.includes("❌")
-                        ? "text-red-600 dark:text-red-400"
-                        : "text-gray-600 dark:text-gray-300"
-                    } animate-fade-in`}
+                  <div
+                    className={`mt-6 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium shadow-md animate-fade-in transition-all duration-300
+                      ${
+                        status.includes("✅")
+                          ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 border border-green-300 dark:border-green-700"
+                          : status.includes("❌")
+                          ? "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 border border-red-300 dark:border-red-700"
+                          : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
+                      }`}
                   >
+                    {status.includes("✅") && "🎉"}
+                    {status.includes("❌") && "⚠️"}
                     {status}
-                  </p>
+                  </div>
                 )}
               </div>
             </form>
@@ -120,7 +145,6 @@ export default function Contact() {
         )}
       </div>
 
-      {/* Animation styles */}
       <style>
         {`
           @keyframes fade-in {
@@ -130,6 +154,10 @@ export default function Contact() {
 
           .animate-fade-in {
             animation: fade-in 0.5s ease-out;
+          }
+
+          .bounce {
+            animation: bounce 1s infinite;
           }
         `}
       </style>
