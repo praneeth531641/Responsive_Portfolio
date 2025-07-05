@@ -62,7 +62,7 @@ const projects = [
       "Contact form via EmailJS",
     ],
     stack: ["React", "Tailwind CSS", "EmailJS"],
-    github: "#",
+    github: "https://github.com/praneeth531641/portfolio-app",
   },
 ];
 
