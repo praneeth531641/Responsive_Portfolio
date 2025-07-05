@@ -71,7 +71,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="src/assets/PRANEETH_RAYAVARAPU_RESUME.pdf"
+              href="/PRANEETH_RAYAVARAPU_RESUME.pdf"
               download
               className="flex items-center gap-2 bg-white text-indigo-700 px-6 py-3 rounded-full shadow hover:bg-gray-100 transition font-semibold"
             >
