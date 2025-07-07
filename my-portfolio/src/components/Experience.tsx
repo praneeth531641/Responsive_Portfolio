@@ -1,11 +1,29 @@
 // src/components/Experience.jsx
-
 import { FaBriefcase } from "react-icons/fa";
+
+// Utility function to calculate tenure from start date to current date
+function calculateTenure(startDateStr: string | number | Date) {
+  const startDate = new Date(startDateStr);
+  const today = new Date();
+
+  let years = today.getFullYear() - startDate.getFullYear();
+  let months = today.getMonth() - startDate.getMonth();
+
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  const yearLabel = years > 0 ? `${years} yr${years > 1 ? "s" : ""}` : "";
+  const monthLabel = months > 0 ? `${months} mo${months > 1 ? "s" : ""}` : "";
+
+  return [yearLabel, monthLabel].filter(Boolean).join(" ");
+}
 
 const experiences = [
   {
     company: "Caliber Technologies",
-    tenure: "Sep 2023 – Present (1 yr 10 mo)",
+    startDate: "2023-09-04",
     roles: [
       {
         role: "Software Engineer",
@@ -66,7 +84,7 @@ export default function Experience() {
                 {exp.company}
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 italic">
-                Tenure: {exp.tenure}
+                Tenure: {new Date(exp.startDate).toLocaleString('default', { month: 'short', year: 'numeric' })} – Present ({calculateTenure(exp.startDate)})
               </p>
 
               {exp.roles.map((role, i) => (
