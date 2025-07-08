@@ -91,7 +91,7 @@ export default function Navbar() {
       {open && (
         <div className="fixed inset-0 z-[99] bg-transparent pointer-events-none">
           <div
-            className="absolute right-4 top-[70px] w-[50%] max-w-sm bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 px-5 py-6 space-y-4 pointer-events-auto transition-all duration-300"
+            className="absolute right-4 top-[70px] w-[50%] max-w-xs bg-white dark:bg-gray-900 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 px-4 py-4 space-y-3 pointer-events-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {links.map((link) => (
@@ -99,14 +99,14 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-4 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 text-base font-medium hover:bg-indigo-50 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-white transition duration-200"
+                className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 text-sm font-medium hover:bg-indigo-50 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-white transition"
               >
                 {link.icon}
                 {link.name}
               </a>
             ))}
 
-            <div className="pt-4 border-t border-gray-300 dark:border-gray-700 flex justify-center">
+            <div className="pt-2 border-t border-gray-300 dark:border-gray-700 flex justify-center">
               <DarkModeToggle />
             </div>
           </div>
