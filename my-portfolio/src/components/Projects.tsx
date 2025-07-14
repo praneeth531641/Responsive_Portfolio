@@ -1,20 +1,7 @@
 // src/components/Projects.jsx
 
 const projects = [
-  {
-    title: "Empro - Microbial Management System",
-    description:
-      "Enterprise-grade pharmaceutical platform for managing microbial test results and ensuring compliance.",
-    features: [
-      "Zone-wise sample tracking",
-      "Microbial trend graphs",
-      "Auto-trigger alerts",
-      "PDF/Excel reports",
-      "Audit trail for CFR 21 compliance",
-    ],
-    stack: ["Angular", ".NET Core", "SQL Server"],
-    github: "#",
-  },
+  
   {
     title: "Courses Portal - LMS",
     description:
