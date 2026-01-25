@@ -29,7 +29,7 @@ export default function AudioPlayer() {
       <audio
         ref={audioRef}
         loop
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src="src/assets/intro.mpeg"
       />
 
       {/* Floating Music Toggle Button */}
