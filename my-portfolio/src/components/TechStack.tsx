@@ -1,77 +1,85 @@
-// src/components/TechStack.jsx
-
 import {
-  SiAngular,
-  SiReact,
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiBootstrap,
-  SiDotnet,
-  SiNodedotjs,
-  SiExpress,
-  SiFlask,
-  SiMongodb,
-  SiMysql,
-  SiGit,
-  SiPostman,
+  SiKubernetes,
+  SiDocker,
   SiGithub,
-  SiFirebase,
+  SiTerraform,
+  SiSnowflake,
+  SiDbt,
+  SiFastapi,
+  SiDotnet,
+  SiReact,
+  SiAngular,
 } from "react-icons/si";
+import { FaDatabase } from "react-icons/fa";
 
-import { FaDatabase, FaCloud } from "react-icons/fa";
-
-const techs = [
-  { name: "Angular", icon: <SiAngular className="text-red-500" />, level: "Expert" },
-  { name: "React", icon: <SiReact className="text-blue-400" />, level: "Expert" },
-  { name: "HTML5", icon: <SiHtml5 className="text-orange-600" />, level: "Advanced" },
-  { name: "CSS3", icon: <SiCss3 className="text-blue-600" />, level: "Advanced" },
-  { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" />, level: "Advanced" },
-  { name: "Bootstrap", icon: <SiBootstrap className="text-purple-500" />, level: "Intermediate" },
-  { name: ".NET", icon: <SiDotnet className="text-indigo-500" />, level: "Advanced" },
-  { name: "Node.js", icon: <SiNodedotjs className="text-green-600" />, level: "Advanced" },
-  { name: "Express.js", icon: <SiExpress className="text-gray-400" />, level: "Intermediate" },
-  { name: "Flask", icon: <SiFlask className="text-gray-300" />, level: "Intermediate" },
-  { name: "MongoDB", icon: <SiMongodb className="text-green-500" />, level: "Advanced" },
-  { name: "MySQL", icon: <SiMysql className="text-blue-500" />, level: "Advanced" },
-  { name: "SQL Server", icon: <FaDatabase className="text-slate-600" />, level: "Advanced" },
-  { name: "GIT", icon: <SiGit className="text-orange-500" />, level: "Advanced" },
-  { name: "GitHub", icon: <SiGithub className="text-black dark:text-white" />, level: "Advanced" },
-  { name: "Postman", icon: <SiPostman className="text-orange-400" />, level: "Advanced" },
-  { name: "Azure DevOps", icon: <FaCloud className="text-blue-400" />, level: "Intermediate" },
-  { name: "Firebase", icon: <SiFirebase className="text-yellow-400" />, level: "Basic" },
+const skillGroups = [
+  {
+    category: "Platform & DevOps",
+    skills: [
+      { name: "Kubernetes", icon: <SiKubernetes /> },
+      { name: "Docker", icon: <SiDocker /> },
+      { name: "GitHub Actions", icon: <SiGithub /> },
+      { name: "Terraform", icon: <SiTerraform /> },
+    ],
+  },
+  {
+    category: "Data & AI",
+    skills: [
+      { name: "Snowflake", icon: <SiSnowflake /> },
+      { name: "dbt", icon: <SiDbt /> },
+    ],
+  },
+  {
+    category: "Backend",
+    skills: [
+      { name: "FastAPI", icon: <SiFastapi /> },
+      { name: "ASP.NET Web API", icon: <SiDotnet /> },
+      { name: "SQL Server", icon: <FaDatabase /> },
+    ],
+  },
+  {
+    category: "Frontend",
+    skills: [
+      { name: "React", icon: <SiReact /> },
+      { name: "Angular", icon: <SiAngular /> },
+    ],
+  },
 ];
 
 export default function TechStack() {
   return (
-    <section className="py-20 bg-gradient-to-br from-sky-100 to-purple-100 dark:from-gray-900 dark:to-gray-800" id="tech">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-12">
-          🛠️ Tech Stack
+    <section className="py-20 bg-gradient-to-br from-sky-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden" id="tech">
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-100 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-40 float-animation"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12 fade-in-up">
+          Technical Skills
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-          {techs.map((tech, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl p-6 flex flex-col items-center justify-center transform transition-all duration-300 hover:scale-110 text-center group"
-              title={tech.name}
+        <div className="grid md:grid-cols-2 gap-8">
+          {skillGroups.map((group, idx) => (
+            <div 
+              key={idx} 
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl p-8 transition-all duration-300 card-hover fade-in-up"
+              style={{animationDelay: `${idx * 0.1}s`}}
             >
-              <div className="text-5xl mb-3 group-hover:animate-bounce">{tech.icon}</div>
-              <p className="font-semibold text-sm text-gray-700 dark:text-white">{tech.name}</p>
-              <span
-                className={`mt-1 text-xs font-medium px-2 py-0.5 rounded-full ${
-                  tech.level === "Expert"
-                    ? "bg-green-100 text-green-600"
-                    : tech.level === "Advanced"
-                    ? "bg-blue-100 text-blue-600"
-                    : tech.level === "Intermediate"
-                    ? "bg-yellow-100 text-yellow-700"
-                    : "bg-red-100 text-red-600"
-                }`}
-              >
-                {tech.level}
-              </span>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 pb-3 border-b-2 border-indigo-400 dark:border-indigo-600">
+                {group.category}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {group.skills.map((skill, i) => (
+                  <div
+                    key={i}
+                    className="premium-chip flex items-center gap-2 text-gray-800 dark:text-indigo-100 px-4 py-2.5 rounded-xl font-medium text-sm"
+                  >
+                    <span className="text-lg">{skill.icon}</span>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

@@ -47,12 +47,17 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-r from-sky-50 via-white to-purple-50 dark:from-gray-800 dark:to-gray-900 transition-all"
+      className="py-20 bg-gray-50 dark:bg-gray-900 transition-all"
     >
       <div className="max-w-3xl mx-auto px-6 relative">
-        <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-10">
-          Contact Me
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
+            Let's Talk
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Looking to build or scale data-intensive and AI-driven platforms?
+          </p>
+        </div>
 
         {/* Confetti emoji animation */}
         {confetti && (
@@ -65,16 +70,16 @@ export default function Contact() {
           <div className="text-center">
             <button
               onClick={() => setShowForm(true)}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold shadow-md transition duration-300"
+              className="btn-primary inline-flex items-center gap-2"
             >
               <FaPaperPlane /> Send a Message
             </button>
           </div>
         ) : (
-          <div className="relative shadow-2xl rounded-lg bg-white dark:bg-gray-800 border dark:border-gray-700 p-6 animate-fade-in">
+          <div className="relative shadow-2xl rounded-2xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-8 animate-fade-in card-hover">
             <button
               onClick={() => setShowForm(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition text-xl"
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition text-xl"
               aria-label="Close"
             >
               <FaTimes />
@@ -83,42 +88,42 @@ export default function Contact() {
             <form ref={form} onSubmit={sendEmail} className="space-y-6 mt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="relative">
-                  <FaUser className="absolute left-3 top-4 text-gray-400" />
+                  <FaUser className="absolute left-3 top-4 text-indigo-500" />
                   <input
                     type="text"
                     name="name"
                     required
                     placeholder="Your Name"
-                    className="w-full pl-10 p-4 border border-gray-300 rounded-lg dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full pl-10 p-4 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition"
                   />
                 </div>
                 <div className="relative">
-                  <FaEnvelope className="absolute left-3 top-4 text-gray-400" />
+                  <FaEnvelope className="absolute left-3 top-4 text-indigo-500" />
                   <input
                     type="email"
                     name="email"
                     required
                     placeholder="Your Email"
-                    className="w-full pl-10 p-4 border border-gray-300 rounded-lg dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full pl-10 p-4 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition"
                   />
                 </div>
               </div>
 
               <div className="relative">
-                <FaCommentDots className="absolute left-3 top-5 text-gray-400" />
+                <FaCommentDots className="absolute left-3 top-5 text-indigo-500" />
                 <textarea
                   name="message"
                   rows={5}
                   required
                   placeholder="Your Message"
-                  className="w-full pl-10 p-4 border border-gray-300 rounded-lg dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full pl-10 p-4 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition resize-none"
                 ></textarea>
               </div>
 
               <div className="text-center">
                 <button
                   type="submit"
-                  className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl transition duration-300"
+                  className="btn-primary"
                 >
                   📤 Send Message
                 </button>

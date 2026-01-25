@@ -1,95 +1,101 @@
-// src/components/Projects.jsx
-
 const projects = [
-  
   {
-    title: "Courses Portal - LMS",
+    title: "LLM-Powered Analytics Platform",
     description:
-      "A full-stack learning management system for student course enrollment and admin control.",
+      "Production-grade platform enabling natural-language analytics over Snowflake using LLMs and semantic models. Full end-to-end ownership from UI to data layer.",
     features: [
-      "Role-based access (Admin/Student)",
-      "JWT authentication",
-      "Filtering & real-time seat tracking",
+      "React/Angular UI with LLM gateway integration",
+      "MCP servers exposing semantic models as tools",
+      "Prompt-to-SQL execution over Snowflake data marts",
+      "Kubernetes deployment with GitHub Actions CI/CD",
     ],
-    stack: ["React.js", "Node.js", "MySQL"],
-    github: "https://github.com/praneeth531641/proj_1",
+    stack: ["React", "FastAPI", "Snowflake", "Kubernetes", "Docker", "GitHub Actions"],
+    ownership: "Full Stack • DevOps • Data Engineering",
+    github: "https://github.com/praneeth531641",
   },
   {
-    title: "OpenAI Prompt UI",
+    title: "Cloud-Native Full Stack Application",
     description:
-      "ChatGPT UI for users to interact with OpenAI's API using customizable prompt templates.",
+      "Scalable enterprise application with containerized microservices, automated CI/CD pipelines, and Kubernetes orchestration.",
     features: [
-      "Prompt template selection",
-      "Clipboard & error handling",
-      "Input history tracking",
+      "ASP.NET Web API backend with SQL Server",
+      "Angular frontend with responsive design",
+      "Docker containerization and Kubernetes deployment",
+      "GitHub Actions for continuous integration and deployment",
     ],
-    stack: ["HTML", "CSS", "JavaScript", "OpenAI API"],
-    github: "https://github.com/praneeth531641/PrancoAi",
+    stack: ["Angular", "ASP.NET Core", "SQL Server", "Docker", "Kubernetes", "GitHub Actions"],
+    ownership: "Full Stack • DevOps",
+    github: "https://github.com/praneeth531641",
   },
   {
-    title: "Recycling Management System",
+    title: "Snowflake Data Platform",
     description:
-      "Smart platform encouraging eco-friendly practices through digital waste tracking and scheduling.",
-    features: ["User onboarding", "Pickup calendar", "Eco-score analytics"],
-    stack: ["Node.js", "MySQL", "EJS", "Bootstrap"],
-    github: "https://github.com/praneeth531641/recycling_service",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "Modern mobile-first personal portfolio to highlight skills, projects, and resume.",
+      "Automated data ingestion, transformation, and data mart creation for analytics-ready architectures.",
     features: [
-      "Animated sections",
-      "Downloadable resume",
-      "Contact form via EmailJS",
+      "Data pipeline automation",
+      "Semantic model creation",
+      "Analytics-ready data marts",
+      "dbt for data transformation",
     ],
-    stack: ["React", "Tailwind CSS", "EmailJS"],
-    github: "https://github.com/praneeth531641/portfolio-app",
+    stack: ["Snowflake", "dbt", "Python", "GitHub Actions"],
+    ownership: "Data Engineering",
+    github: "https://github.com/praneeth531641",
   },
 ];
 
 export default function Projects() {
   return (
     <section
-      className="py-20 bg-gradient-to-r from-sky-50 via-white to-purple-50 dark:from-gray-900 dark:to-gray-800"
+      className="py-20 bg-white dark:bg-gray-900"
       id="projects"
     >
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-14">
-          🚀 Projects
+        <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-14">
+          Key Projects
         </h2>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="space-y-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-70 border border-gray-200 dark:border-gray-700 shadow-lg rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transform transition duration-500 backdrop-blur-sm"
+              className="card-hover bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 group overflow-hidden"
             >
-              <h3 className="text-2xl font-semibold text-indigo-700 dark:text-indigo-300 mb-3">
-                {project.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-              <ul className="list-disc list-inside text-sm text-gray-500 dark:text-gray-400 mb-3">
-                {project.features.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 relative z-10">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-purple-700 dark:from-indigo-300 dark:to-purple-300 mb-2 group-hover:to-purple-600 transition">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase opacity-90">
+                    {project.ownership}
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                    {project.description}
+                  </p>
+                  <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1.5 mb-4">
+                    {project.features.map((feature, i) => (
+                      <li key={i} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-5">
                 {project.stack.map((tech, i) => (
                   <span
                     key={i}
-                    className="bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-white text-xs px-3 py-1 rounded-full font-medium"
+                    className="premium-chip text-gray-800 dark:text-indigo-100 text-xs px-3 py-1.5 rounded-lg font-medium"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
+
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-5 text-indigo-600 dark:text-indigo-400 hover:underline font-semibold"
+                className="inline-block text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold group/link transition text-sm"
               >
-                🔗 View on GitHub
+                View on GitHub <span className="inline-block group-hover/link:translate-x-1 transition-transform">→</span>
               </a>
             </div>
           ))}

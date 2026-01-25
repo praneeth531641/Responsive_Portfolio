@@ -1,129 +1,95 @@
-// src/components/Hero.jsx
-import { useEffect, useState } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
-
-const titles = [
-  "Full Stack Developer",
-  "MERN & .NET Specialist",
-  "React & Angular Expert",
-  "API & Database Integrator",
-];
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowDown } from "react-icons/fa";
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [typing, setTyping] = useState(true);
-
-  useEffect(() => {
-    let timeout;
-    if (typing) {
-      timeout = setTimeout(() => {
-        setDisplayed(titles[index].substring(0, displayed.length + 1));
-        if (displayed.length + 1 === titles[index].length) {
-          setTyping(false);
-          setTimeout(() => setTyping(true), 1500);
-        }
-      }, 100);
-    } else {
-      timeout = setTimeout(() => {
-        setDisplayed(titles[index].substring(0, displayed.length - 1));
-        if (displayed.length === 0) {
-          setIndex((index + 1) % titles.length);
-          setTyping(true);
-        }
-      }, 50);
-    }
-    return () => clearTimeout(timeout);
-  }, [displayed, typing, index]);
+  const scrollToSection = () => {
+    document.getElementById("what-i-do")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section className="relative bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-600 text-white py-28" id="hero">
-      <div className="max-w-5xl mx-auto px-6 text-center">
-        <div className="bg-white bg-opacity-5 backdrop-blur-md p-10 rounded-xl shadow-2xl border border-white/10 transition-all">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-            Rayavarapu Praneeth
-          </h1>
+    <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-32 overflow-hidden" id="hero">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl float-animation opacity-30"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl float-animation opacity-20" style={{animationDelay: '1s'}}></div>
+      </div>
 
-          <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium h-10 mb-6 text-white">
-  <span className="border-r-2 border-white pr-2 animate-pulse">{displayed}</span>
-  <span className="blinking-cursor">|</span>
-  <span className="walk text-2xl">🚶‍♂️</span>
-</div>
-
-
-          <p className="max-w-3xl mx-auto text-lg text-gray-200 mb-10">
-            Passionate developer with 2 years of experience building modern web applications using Angular, React, Node.js, and ASP.NET Core. I love creating impactful software and delivering great user experiences.
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <div className="text-center space-y-8 fade-in-up">
+          <div className="space-y-4">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              Full Stack Engineer
+            </h1>
+            
+            <h2 className="text-2xl md:text-3xl font-semibold text-indigo-300 gradient-text">
+              Building Scalable Applications with Cloud & AI Focus
+            </h2>
+          </div>
+          
+          <p className="max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed">
+            I design and build full-stack applications using Angular, React, and ASP.NET. Passionate about cloud technologies, DevOps automation, and exploring AI systems.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <a
-              href="mailto:praneethrayavarapu@gmail.com"
-              className="flex items-center gap-2 bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition"
+              href="#flagship"
+              className="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover-lift flex items-center gap-2"
             >
-              <FaEnvelope /> Contact Me
+              View Architecture
+              <FaArrowDown className="text-sm" />
             </a>
 
+            <a
+              href="#projects"
+              className="border-2 border-indigo-400 hover:bg-indigo-600 text-indigo-300 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover-lift"
+            >
+              View Projects
+            </a>
+
+            <a
+              href="#contact"
+              className="bg-white hover:bg-gray-100 text-slate-900 font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover-lift"
+            >
+              Contact Me
+            </a>
+          </div>
+
+          <div className="flex justify-center gap-6 pt-8 text-3xl">
             <a
               href="https://github.com/praneeth531641"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-white px-6 py-3 rounded-full text-white hover:bg-white hover:text-indigo-700 transition"
+              className="hover:text-indigo-400 transition-all duration-300 hover-lift hover:scale-125"
+              title="GitHub"
             >
-              <FaGithub /> GitHub
+              <FaGithub />
             </a>
-
-            <a
-              href="/PRANEETH_RAYAVARAPU_RESUME.pdf"
-              download
-              className="flex items-center gap-2 bg-white text-indigo-700 px-6 py-3 rounded-full shadow hover:bg-gray-100 transition font-semibold"
-            >
-              <FaDownload /> Resume
-            </a>
-          </div>
-
-          <div className="mt-4 flex justify-center gap-4 text-lg text-gray-100">
             <a
               href="https://linkedin.com/in/praneeth-rayavarapu-8602811a3/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white flex items-center gap-2 underline"
+              className="hover:text-indigo-400 transition-all duration-300 hover-lift hover:scale-125"
+              title="LinkedIn"
             >
-              <FaLinkedin /> LinkedIn
+              <FaLinkedin />
             </a>
-            <span className="hidden sm:inline-block">|</span>
-            <span>📍 Hyderabad, India</span>
+            <a
+              href="mailto:praneethrayavarapu@gmail.com"
+              className="hover:text-indigo-400 transition-all duration-300 hover-lift hover:scale-125"
+              title="Email"
+            >
+              <FaEnvelope />
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white opacity-70 cursor-pointer hover:opacity-100 transition-opacity" onClick={scrollToSection}>
+          <div className="animate-bounce flex flex-col items-center gap-2">
+            <span className="text-sm font-semibold">Scroll Down</span>
+            <FaArrowDown className="text-xl" />
           </div>
         </div>
       </div>
-
-      {/* Optional Scroll Down Hint */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white opacity-70 animate-bounce">
-        ↓ Scroll Down
-      </div>
-
-      {/* Cursor blinking effect */}
-      <style>
-        {`
-    .blinking-cursor {
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .walk {
-      display: inline-block;
-      animation: walkAnimation 2s infinite linear;
-    }
-
-    @keyframes walkAnimation {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(5px); }
-      100% { transform: translateX(0); }
-    }
-  `}
-      </style>
     </section>
   );
 }

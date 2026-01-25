@@ -1,13 +1,11 @@
-// src/components/Experience.jsx
 import { FaBriefcase } from "react-icons/fa";
 
-// Utility function to calculate tenure from start date to current date
-function calculateTenure(startDateStr: string | number | Date) {
+function calculateTenure(startDateStr: string | number | Date, endDateStr?: string | number | Date) {
   const startDate = new Date(startDateStr);
-  const today = new Date();
+  const endDate = endDateStr ? new Date(endDateStr) : new Date();
 
-  let years = today.getFullYear() - startDate.getFullYear();
-  let months = today.getMonth() - startDate.getMonth();
+  let years = endDate.getFullYear() - startDate.getFullYear();
+  let months = endDate.getMonth() - startDate.getMonth();
 
   if (months < 0) {
     years -= 1;
@@ -24,10 +22,11 @@ const experiences = [
   {
     company: "Caliber Technologies",
     startDate: "2023-09-04",
+    endDate: "2025-09-30",
     roles: [
       {
         role: "Software Engineer",
-        period: "Sep 2024 – Present",
+        period: "Sep 2024 – Sep 2025",
         points: [
           "Led feature implementation for scalable enterprise modules across full stack.",
           "Developed reusable Angular UI components integrated with secure ASP.NET Core APIs.",
@@ -54,57 +53,69 @@ const experiences = [
         ]
       }
     ]
+  },
+  {
+    company: "AMD – Senior Software / Platform Engineer",
+    startDate: "2025-10-01",
+    description: "Built and operated cloud-native data and AI platforms, owning CI/CD automation, Kubernetes deployments, Snowflake data systems, and LLM-powered analytics."
   }
 ];
-
 export default function Experience() {
   return (
     <section
-      className="py-20 bg-gradient-to-b from-white via-slate-50 to-blue-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800"
+      className="py-20 bg-white dark:bg-gray-900"
       id="experience"
     >
       <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-white">Work Experience</h2>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Companies where I’ve gained hands-on experience
-          </p>
-        </div>
+        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
+          Experience Snapshot
+        </h2>
 
-        <div className="relative border-l-4 border-indigo-500 pl-6 ml-3">
-          {experiences.map((exp, idx) => (
-            <div
-              key={idx}
-              className="mb-12 ml-4 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-all duration-300 p-6 relative"
-            >
-              <div className="absolute -left-7 top-6 bg-indigo-500 text-white p-2 rounded-full">
-                <FaBriefcase className="text-lg" />
-              </div>
-              <h3 className="text-2xl font-semibold text-indigo-700 dark:text-indigo-400">
+        {experiences.map((exp, idx) => (
+          <div
+            key={idx}
+            className="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 border border-gray-200 dark:border-slate-700 mb-6 shadow-lg transition hover:shadow-xl"
+          >
+            <div className="flex items-start gap-3 mb-3">
+              <FaBriefcase className="text-indigo-600 dark:text-indigo-400 text-xl mt-1" />
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {exp.company}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 italic">
-                Tenure: {new Date(exp.startDate).toLocaleString('default', { month: 'short', year: 'numeric' })} – Present ({calculateTenure(exp.startDate)})
-              </p>
-
-              {exp.roles.map((role, i) => (
-                <div key={i} className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
-                    {role.role}
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 italic">
-                    {role.period}
-                  </p>
-                  <ul className="list-disc ml-5 text-sm space-y-1 text-gray-600 dark:text-gray-400">
-                    {role.points.map((point, j) => (
-                      <li key={j}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
             </div>
-          ))}
-        </div>
+
+            {exp.roles ? (
+              <>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 italic">
+                  Tenure: {new Date(exp.startDate).toLocaleString('default', { month: 'short', year: 'numeric' })} – {exp.endDate ? new Date(exp.endDate).toLocaleString('default', { month: 'short', year: 'numeric' }) : "Present"} ({calculateTenure(exp.startDate, exp.endDate)})
+                </p>
+                {exp.roles.map((role, i) => (
+                  <div key={i} className="mb-6">
+                    <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                      {role.role}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 italic">
+                      {role.period}
+                    </p>
+                    <ul className="list-disc ml-5 text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                      {role.points.map((point, j) => (
+                        <li key={j}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 italic">
+                  Tenure: {new Date(exp.startDate).toLocaleString('default', { month: 'short', year: 'numeric' })} – Present ({calculateTenure(exp.startDate)})
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                  {exp.description}
+                </p>
+              </>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );
