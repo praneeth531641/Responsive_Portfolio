@@ -46,7 +46,7 @@ const projects = [
 export default function Projects() {
   return (
     <section
-      className="py-20 bg-white dark:bg-gray-900"
+      className="py-20 bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden"
       id="projects"
     >
       <div className="max-w-6xl mx-auto px-6">
@@ -57,7 +57,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="card-hover bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 group overflow-hidden"
+              className="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 group overflow-hidden border-2 border-indigo-200 dark:border-indigo-700/40 shadow-md dark:shadow-lg"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 relative z-10">
                 <div className="flex-1">

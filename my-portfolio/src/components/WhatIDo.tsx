@@ -25,7 +25,7 @@ const services = [
 
 export default function WhatIDo() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800" id="what-i-do">
+    <section className="py-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden" id="what-i-do">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-3">
           My Focus Areas
@@ -38,9 +38,9 @@ export default function WhatIDo() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="card-hover bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 text-center transform transition hover:shadow-xl group"
+              className="card-hover bg-white dark:bg-slate-800 rounded-2xl shadow-md dark:shadow-lg p-8 text-center transform transition hover:shadow-xl dark:hover:shadow-xl group border-2 border-indigo-200 dark:border-indigo-700/40"
             >
-              <div className="flex justify-center mb-4 text-5xl text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
+              <div className="flex justify-center mb-4 text-5xl group-hover:scale-110 transition-transform">
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">

@@ -47,9 +47,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gray-50 dark:bg-gray-900 transition-all"
+      className="py-20 bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:to-slate-800 transition-all relative overflow-hidden"
     >
-      <div className="max-w-3xl mx-auto px-6 relative">
+      <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Let's Talk
@@ -76,7 +76,7 @@ export default function Contact() {
             </button>
           </div>
         ) : (
-          <div className="relative shadow-2xl rounded-2xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-8 animate-fade-in card-hover">
+          <div className="relative shadow-2xl rounded-2xl bg-white dark:bg-slate-800 border-2 border-indigo-200 dark:border-indigo-700/40 p-8 animate-fade-in card-hover">
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition text-xl"

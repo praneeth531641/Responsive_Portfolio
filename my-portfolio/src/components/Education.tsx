@@ -42,7 +42,7 @@ export default function Education() {
 
   return (
     <section
-      className="py-20 bg-gradient-to-b from-white to-blue-50 dark:from-gray-800 dark:to-gray-900"
+      className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden"
       id="education"
     >
       <div className="max-w-6xl mx-auto px-6">
@@ -54,7 +54,7 @@ export default function Education() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Education Section */}
           <div>
-            <h3 className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-2">
+            <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-6 flex items-center gap-2">
               <FaGraduationCap /> Education
             </h3>
             <ul className="space-y-6">
@@ -63,7 +63,7 @@ export default function Education() {
                   key={i}
                   className={`transition duration-700 ease-out transform ${
                     visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                  } bg-white dark:bg-gray-800 p-5 rounded-lg shadow border-l-4 border-blue-500 dark:border-blue-400`}
+                  } bg-white dark:bg-slate-800 p-5 rounded-lg shadow border-l-4 border-indigo-500 dark:border-indigo-400 card-hover`}
                   style={{ transitionDelay: `${i * 150}ms` }}
                 >
                   <h4 className="font-semibold text-lg text-gray-800 dark:text-white">{edu.degree}</h4>
@@ -77,7 +77,7 @@ export default function Education() {
 
           {/* Certifications Section */}
           <div>
-            <h3 className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-2">
+            <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-6 flex items-center gap-2">
               <FaCertificate /> Certifications
             </h3>
             <ul className="space-y-4">
@@ -86,7 +86,7 @@ export default function Education() {
                   key={i}
                   className={`transition duration-700 ease-out transform ${
                     visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                  } bg-white dark:bg-gray-800 p-4 rounded-lg shadow border-l-4 border-yellow-400 flex items-center justify-between`}
+                  } bg-white dark:bg-slate-800 p-4 rounded-lg shadow border-l-4 border-purple-500 dark:border-purple-400 flex items-center justify-between card-hover`}
                   style={{ transitionDelay: `${i * 150}ms` }}
                 >
                   <span className="text-gray-800 dark:text-white">{cert.name}</span>

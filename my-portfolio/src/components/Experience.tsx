@@ -74,7 +74,7 @@ export default function Experience() {
         {experiences.map((exp, idx) => (
           <div
             key={idx}
-            className="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 border border-gray-200 dark:border-slate-700 mb-6 shadow-lg transition hover:shadow-xl"
+            className="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 border-2 border-indigo-200 dark:border-indigo-700/40 mb-6 shadow-lg transition hover:shadow-xl"
           >
             <div className="flex items-start gap-3 mb-3">
               <FaBriefcase className="text-indigo-600 dark:text-indigo-400 text-xl mt-1" />

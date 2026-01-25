@@ -2,11 +2,11 @@ import { SiReact, SiAngular, SiFastapi, SiDotnet, SiSnowflake, SiDocker, SiKuber
 
 export default function FlagshipPlatform() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900" id="flagship">
+    <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-800 dark:to-slate-900 relative overflow-hidden" id="flagship">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            LLM-Powered Data & AI System
+            Learning Project: LLM-Powered Data & AI System
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
             An aspiration project showcasing end-to-end platform architecture: natural-language analytics over Snowflake using LLMs, semantic models, and cloud-native infrastructure.
@@ -14,7 +14,7 @@ export default function FlagshipPlatform() {
         </div>
 
         {/* Architecture Diagram */}
-        <div className="bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-12 mb-12 border border-gray-200 dark:border-slate-700 card-hover">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-12 mb-12 border-2 border-indigo-200 dark:border-indigo-700/40 card-hover shadow-lg dark:shadow-xl">
           <div className="space-y-8 text-center">
             <div className="architecture-box bg-gradient-to-br from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl inline-block shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               UI (React / Angular)

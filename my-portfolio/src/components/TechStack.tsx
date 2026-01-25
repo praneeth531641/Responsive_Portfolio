@@ -48,10 +48,15 @@ const skillGroups = [
 
 export default function TechStack() {
   return (
-    <section className="py-20 bg-gradient-to-br from-sky-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden" id="tech">
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-100 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-40 float-animation"></div>
+    <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden" id="tech">
+      {/* Light mode background */}
+      <div className="absolute inset-0 light-only pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-100/60 rounded-full blur-3xl opacity-40 float-animation"></div>
+      </div>
+
+      {/* Dark mode background */}
+      <div className="absolute inset-0 dark-only pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-900/30 rounded-full blur-3xl opacity-40 float-animation"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -63,7 +68,7 @@ export default function TechStack() {
           {skillGroups.map((group, idx) => (
             <div 
               key={idx} 
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl p-8 transition-all duration-300 card-hover fade-in-up"
+              className="bg-white dark:bg-slate-800 rounded-2xl shadow-md dark:shadow-lg hover:shadow-xl dark:hover:shadow-xl p-8 transition-all duration-300 card-hover fade-in-up border-2 border-indigo-200 dark:border-indigo-700/40"
               style={{animationDelay: `${idx * 0.1}s`}}
             >
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 pb-3 border-b-2 border-indigo-400 dark:border-indigo-600">

@@ -18,15 +18,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 to-slate-900 dark:from-gray-950 dark:to-black py-12 mt-20 text-white border-t border-gray-800">
-      <div className="max-w-4xl mx-auto px-4">
+    <footer className="relative bg-gradient-to-br from-gray-100 to-slate-100 dark:from-gray-950 dark:to-black py-12 mt-20 text-gray-900 dark:text-white border-t border-gray-300 dark:border-gray-800">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Social Links */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-8 text-lg font-medium">
           <a
             href="https://linkedin.com/in/praneeth-rayavarapu-8602811a3/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-all duration-300 hover-lift group"
+            className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-300 hover-lift group"
           >
             <FaLinkedin className="text-2xl group-hover:scale-125 transition-transform" /> 
             <span className="hidden sm:inline">LinkedIn</span>
@@ -35,14 +35,14 @@ export default function Footer() {
             href="https://github.com/praneeth531641"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-all duration-300 hover-lift group"
+            className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover-lift group"
           >
             <FaGithub className="text-2xl group-hover:scale-125 transition-transform" /> 
             <span className="hidden sm:inline">GitHub</span>
           </a>
           <a
             href="mailto:praneethrayavarapu@gmail.com"
-            className="flex items-center gap-2 text-red-400 hover:text-red-300 transition-all duration-300 hover-lift group"
+            className="flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-all duration-300 hover-lift group"
           >
             <FaEnvelope className="text-2xl group-hover:scale-125 transition-transform" /> 
             <span className="hidden sm:inline">Email</span>
@@ -50,11 +50,11 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-700 pt-6 text-center">
-          <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} <span className="font-semibold text-gray-300">Rayavarapu Praneeth</span> — Full Stack Engineer with Cloud & AI Focus
+        <div className="border-t border-gray-300 dark:border-gray-700 pt-6 text-center">
+          <p className="text-sm text-gray-700 dark:text-gray-400">
+            © {new Date().getFullYear()} <span className="font-semibold text-gray-800 dark:text-gray-300">Rayavarapu Praneeth</span> — Full Stack Engineer with Cloud & AI Focus
           </p>
-          <p className="text-xs text-gray-500 mt-2">Crafted with <span className="text-red-400">❤️</span> using React, TypeScript & Tailwind CSS</p>
+          <p className="text-xs text-gray-600 dark:text-gray-500 mt-2">Crafted with <span className="text-red-600 dark:text-red-400">❤️</span> using React, TypeScript & Tailwind CSS</p>
         </div>
       </div>
 
