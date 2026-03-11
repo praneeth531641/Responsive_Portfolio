@@ -24,6 +24,9 @@ interface MetricsData {
 }
 
 export const AnalyticsSection: React.FC = () => {
+  const [isDark, setIsDark] = useState(() =>
+    typeof document !== 'undefined' ? document.documentElement.classList.contains('dark') : false
+  );
   const [metrics, setMetrics] = useState<MetricsData>({
     totalViews: 0,
     scrollDepth: { '25%': 0, '50%': 0, '75%': 0, '100%': 0 },
@@ -56,6 +59,17 @@ export const AnalyticsSection: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const html = document.documentElement;
+    const syncTheme = () => setIsDark(html.classList.contains('dark'));
+
+    syncTheme();
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(html, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
+  }, []);
+
   // Prepare data for line chart (scroll depth over time)
   const scrollDepthData = Object.entries(metrics.scrollDepth).map(([depth, value]) => ({
     depth,
@@ -79,6 +93,13 @@ export const AnalyticsSection: React.FC = () => {
   ];
 
   const COLORS = ['#3B82F6', '#06B6D4', '#8B5CF6'];
+  const axisColor = isDark ? 'rgba(255,255,255,0.7)' : 'rgba(15,23,42,0.7)';
+  const tickColor = isDark ? 'rgba(255,255,255,0.85)' : 'rgba(30,41,59,0.88)';
+  const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(148,163,184,0.28)';
+  const labelColor = isDark ? '#F8FAFC' : '#0F172A';
+  const tooltipBg = isDark ? 'rgba(30, 41, 59, 0.95)' : 'rgba(255, 255, 255, 0.98)';
+  const tooltipBorder = isDark ? '1px solid rgba(59, 130, 246, 0.3)' : '1px solid rgba(99, 102, 241, 0.2)';
+  const tooltipLabelColor = isDark ? '#fff' : '#0f172a';
 
   return (
     <section id="analytics" className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
@@ -150,17 +171,18 @@ export const AnalyticsSection: React.FC = () => {
             </h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={scrollDepthData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                <XAxis dataKey="depth" stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
-                <YAxis stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
+                <XAxis dataKey="depth" stroke={axisColor} tick={{ fill: tickColor }} />
+                <YAxis stroke={axisColor} tick={{ fill: tickColor }} />
                 <Tooltip
                   cursor={{ fill: 'transparent' }}
                   contentStyle={{
-                    backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    backgroundColor: tooltipBg,
+                    border: tooltipBorder,
                     borderRadius: '12px',
                   }}
-                  labelStyle={{ color: '#fff' }}
+                  labelStyle={{ color: tooltipLabelColor }}
+                  itemStyle={{ color: tooltipLabelColor }}
                   formatter={(value) => [`${value}`, 'Visitors']}
                 />
                 <Line
@@ -170,7 +192,7 @@ export const AnalyticsSection: React.FC = () => {
                   strokeWidth={3}
                   dot={{ fill: '#06B6D4', r: 6 }}
                   activeDot={{ r: 8 }}
-                  label={{ fill: '#fff' }}
+                  label={{ fill: labelColor }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -189,7 +211,27 @@ export const AnalyticsSection: React.FC = () => {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ name, value }) => `${name}: ${value}`}
+                  label={({ cx = 0, cy = 0, midAngle = 0, outerRadius = 0, percent = 0, name, value }) => {
+                    const radius = outerRadius + 18;
+                    const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180));
+                    const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
+
+                    if (percent < 0.05) return null;
+
+                    return (
+                      <text
+                        x={x}
+                        y={y}
+                        fill={labelColor}
+                        textAnchor={x > cx ? 'start' : 'end'}
+                        dominantBaseline="central"
+                        fontSize={12}
+                        fontWeight={600}
+                      >
+                        {`${name}: ${value}`}
+                      </text>
+                    );
+                  }}
                   outerRadius={100}
                   fill="#8884d8"
                   dataKey="value"
@@ -200,11 +242,12 @@ export const AnalyticsSection: React.FC = () => {
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    backgroundColor: tooltipBg,
+                    border: tooltipBorder,
                     borderRadius: '12px',
                   }}
-                  labelStyle={{ color: '#fff' }}
+                  labelStyle={{ color: tooltipLabelColor }}
+                  itemStyle={{ color: tooltipLabelColor }}
                   formatter={(value) => [`${value}`, 'Count']}
                 />
               </PieChart>
@@ -221,24 +264,25 @@ export const AnalyticsSection: React.FC = () => {
             </h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={sectionsData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                <XAxis dataKey="section" stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
-                <YAxis stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
+                <XAxis dataKey="section" stroke={axisColor} tick={{ fill: tickColor }} />
+                <YAxis stroke={axisColor} tick={{ fill: tickColor }} />
                 <Tooltip
                   cursor={{ fill: 'transparent' }}
                   contentStyle={{
-                    backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    backgroundColor: tooltipBg,
+                    border: tooltipBorder,
                     borderRadius: '12px',
                   }}
-                  labelStyle={{ color: '#fff' }}
+                  labelStyle={{ color: tooltipLabelColor }}
+                  itemStyle={{ color: tooltipLabelColor }}
                   formatter={(value) => [`${value}`, 'Views']}
                 />
                 <Bar
                   dataKey="views"
                   fill="#8B5CF6"
                   radius={[8, 8, 0, 0]}
-                  label={{ fill: '#fff' }}
+                  label={{ fill: labelColor }}
                   activeBar={false}
                 />
               </BarChart>
