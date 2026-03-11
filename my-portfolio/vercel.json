@@ -2,11 +2,5 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "vite",
-  "env": {
-    "VITE_GA_MEASUREMENT_ID": {
-      "description": "Google Analytics Measurement ID (format: G-XXXXXXXXXX)",
-      "required": true
-    }
-  }
+  "framework": "vite"
 }
