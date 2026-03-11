@@ -3,7 +3,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "vite",
-  "nodeVersion": "18.x",
   "env": {
     "VITE_GA_MEASUREMENT_ID": {
       "description": "Google Analytics Measurement ID (format: G-XXXXXXXXXX)",
