@@ -154,6 +154,7 @@ export const AnalyticsSection: React.FC = () => {
                 <XAxis dataKey="depth" stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
                 <YAxis stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
                 <Tooltip
+                  cursor={{ fill: 'transparent' }}
                   contentStyle={{
                     backgroundColor: 'rgba(30, 41, 59, 0.95)',
                     border: '1px solid rgba(59, 130, 246, 0.3)',
@@ -224,6 +225,7 @@ export const AnalyticsSection: React.FC = () => {
                 <XAxis dataKey="section" stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
                 <YAxis stroke="rgba(255,255,255,0.6)" tick={{ fill: 'rgba(255,255,255,0.8)' }} />
                 <Tooltip
+                  cursor={{ fill: 'transparent' }}
                   contentStyle={{
                     backgroundColor: 'rgba(30, 41, 59, 0.95)',
                     border: '1px solid rgba(59, 130, 246, 0.3)',
@@ -232,7 +234,13 @@ export const AnalyticsSection: React.FC = () => {
                   labelStyle={{ color: '#fff' }}
                   formatter={(value) => [`${value}`, 'Views']}
                 />
-                <Bar dataKey="views" fill="#8B5CF6" radius={[8, 8, 0, 0]} label={{ fill: '#fff' }} />
+                <Bar
+                  dataKey="views"
+                  fill="#8B5CF6"
+                  radius={[8, 8, 0, 0]}
+                  label={{ fill: '#fff' }}
+                  activeBar={false}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>
