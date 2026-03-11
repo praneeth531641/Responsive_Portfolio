@@ -22,7 +22,7 @@ const experiences = [
   {
     company: "Caliber Technologies",
     startDate: "2023-09-04",
-    endDate: "2025-09-30",
+    endDate: "2025-09-05",
     roles: [
       {
         role: "Software Engineer",
@@ -56,7 +56,7 @@ const experiences = [
   },
   {
     company: "AMD – Senior Software / Platform Engineer",
-    startDate: "2025-10-01",
+    startDate: "2025-10-16",
     description: "Built and operated cloud-native data and AI platforms, owning CI/CD automation, Kubernetes deployments, Snowflake data systems, and LLM-powered analytics."
   }
 ];

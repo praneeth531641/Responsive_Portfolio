@@ -23,16 +23,16 @@ export default function Hero() {
         <div className="text-center space-y-8 fade-in-up">
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
-              Full Stack Engineer
+              AI Data Platform Engineer
             </h1>
             
             <h2 className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-              Building Scalable Applications with Cloud & AI Focus
+              MLOps • Cloud-Native Analytics • Full Stack
             </h2>
           </div>
           
             <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            I design and build full-stack applications using Angular, React, and ASP.NET. I have expertise in cloud technologies, DevOps automation, and AI systems.
+            I architect production-grade analytics systems integrating Snowflake data warehouses with modern AI/ML workflows, Kubernetes-based MLOps infrastructure, and REST API microservices.
             </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">

@@ -20,9 +20,9 @@ const education = [
 ];
 
 const certifications = [
-  { name: "Essentials of Python - Coursera", badge: true },
-  { name: "Java Certification - HackerRank", badge: true },
-  { name: "Python Certification - HackerRank", badge: true },
+  { name: "SnowPro Core Certification (In Progress)", badge: false },
+  { name: "AWS Certified Cloud Practitioner (In Progress)", badge: false },
+  { name: "Kubernetes Administrator (CKA) (In Progress)", badge: false },
 ];
 
 export default function Education() {
