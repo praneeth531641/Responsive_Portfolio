@@ -10,16 +10,29 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import AIAssistant from "./components/AIAssistant";
+import AnalyticsSection from "./components/AnalyticsSection";
+import { useAnalytics } from "./hooks/useAnalytics";
+import { useSectionTracking, trackScrollDepth } from "./components/Analytics";
 
 function App() {
+  // Initialize Google Analytics with your Measurement ID
+  const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || "G-XXXXXXXXXX";
+  useAnalytics(GA_MEASUREMENT_ID);
+  
+  // Track section views and scroll depth
+  useSectionTracking();
+  
   useEffect(() => {
     // Set page metadata
-    document.title = "Praneeth | Full Stack Engineer – Cloud & AI Focus";
+    document.title = "Praneeth | AI Data Platform Engineer – MLOps & Cloud Focus";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Full Stack Engineer building scalable applications with Angular, React, ASP.NET. Learning platform engineering, DevOps, and AI systems.");
+      metaDescription.setAttribute("content", "AI Data Platform Engineer specializing in Snowflake, Kubernetes, LLMs, and cloud-native architecture. 2.4+ years building production systems at scale.");
     }
+
+    // Track scroll depth
+    trackScrollDepth();
   }, []);
 
   return (
@@ -36,6 +49,7 @@ function App() {
           <TechStack />
           <Projects />
           <Experience />
+          <AnalyticsSection />
           <Contact />
         </section>
       </main>
