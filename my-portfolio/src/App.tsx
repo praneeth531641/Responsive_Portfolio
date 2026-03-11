@@ -9,7 +9,7 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import AudioPlayer from "./components/AudioPlayer";
+import AIAssistant from "./components/AIAssistant";
 
 function App() {
   useEffect(() => {
@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 font-sans">
       <Navbar />
-      <AudioPlayer />
+      <AIAssistant />
 
       {/* Offset to prevent content being hidden behind fixed navbar */}
       <main className="pt-24">
