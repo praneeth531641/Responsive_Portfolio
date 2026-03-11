@@ -58,7 +58,7 @@ export default function Navbar() {
               className="relative h-10 w-10 rounded-full border-2 border-indigo-600 dark:border-indigo-400 shadow-lg group-hover:shadow-indigo-500/50 transition-all"
             />
           </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent hidden sm:inline">
+          <span className="text-base sm:text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent inline">
             Praneeth
           </span>
         </a>
