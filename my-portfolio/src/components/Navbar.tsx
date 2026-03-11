@@ -59,7 +59,7 @@ export default function Navbar() {
             />
           </div>
           <span className="text-base sm:text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent inline">
-            Praneeth
+            Praneeth Rayavarapu
           </span>
         </a>
 
