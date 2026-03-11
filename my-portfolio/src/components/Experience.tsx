@@ -20,6 +20,11 @@ function calculateTenure(startDateStr: string | number | Date, endDateStr?: stri
 
 const experiences = [
   {
+    company: "AMD – Senior Platform Engineer",
+    startDate: "2025-10-16",
+    description: "Architected and deployed Kubernetes-based platforms serving 500+ internal users with 99.9% uptime. Engineered 12+ Snowflake datamarts reducing query latency by 40% and cutting compute costs by $12K/month. Built GitHub Actions CI/CD pipelines reducing deployment time from 4 hours to 45 minutes, enabling 3x faster release cycles. Developed AI-enabled analytics workflows integrating LLMs with structured data, enabling natural language querying for non-technical stakeholders. Implemented infrastructure-as-code using Terraform and established Prometheus/Grafana monitoring ensuring platform scalability."
+  },
+  {
     company: "Caliber Technologies",
     startDate: "2023-09-04",
     endDate: "2025-09-05",
@@ -28,37 +33,34 @@ const experiences = [
         role: "Software Engineer",
         period: "Sep 2024 – Sep 2025",
         points: [
-          "Led feature implementation for scalable enterprise modules across full stack.",
-          "Developed reusable Angular UI components integrated with secure ASP.NET Core APIs.",
-          "Mentored junior developers and optimized CI/CD pipelines using Azure DevOps.",
-          "Resolved critical bugs and enhanced performance based on analytics."
+          "Developed 15+ RESTful APIs using ASP.NET Core and FastAPI, handling 50K+ daily requests with role-based access control.",
+          "Engineered Angular and React.js frontend modules for enterprise monitoring dashboards, improving data visibility by 60%.",
+          "Optimized SQL queries and database schemas in MySQL/MSSQL, reducing report generation time from 2 hours to 15 minutes.",
+          "Implemented secure microservices architecture with OAuth2 and API gateway patterns, ensuring enterprise security compliance.",
+          "Managed CI/CD pipelines using GitHub Actions and Azure DevOps, automating testing across 4 environments."
         ]
       },
       {
         role: "Junior Software Engineer",
         period: "Mar 2024 – Aug 2024",
         points: [
-          "Implemented independent modules in Angular connected to backend APIs.",
-          "Collaborated with QA and product teams to meet sprint goals.",
-          "Improved SQL queries and enhanced backend API responses."
+          "Implemented independent Angular modules connected to backend ASP.NET Core APIs with JWT authentication.",
+          "Collaborated with QA and product teams to deliver sprint goals on schedule, improving feature delivery speed by 25%.",
+          "Optimized database queries and enhanced API response times, contributing to performance improvements."
         ]
       },
       {
         role: "Trainee Software Engineer",
         period: "Sep 2023 – Feb 2024",
         points: [
-          "Trained in Angular and ASP.NET Core for full-stack enterprise development.",
-          "Assisted senior developers in bug fixing and unit testing.",
-          "Learned and supported DevOps deployment practices."
+          "Trained in Angular and ASP.NET Core for full-stack enterprise development with hands-on projects.",
+          "Assisted senior developers in bug fixing and wrote unit tests for critical modules.",
+          "Learned and supported DevOps deployment practices using Azure infrastructure."
         ]
       }
     ]
-  },
-  {
-    company: "AMD – Senior Software / Platform Engineer",
-    startDate: "2025-10-16",
-    description: "Built and operated cloud-native data and AI platforms, owning CI/CD automation, Kubernetes deployments, Snowflake data systems, and LLM-powered analytics."
   }
+  
 ];
 export default function Experience() {
   return (

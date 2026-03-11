@@ -9,8 +9,15 @@ import {
   SiDotnet,
   SiReact,
   SiAngular,
+  SiPython,
+  SiPostgresql,
+  SiApachespark,
+  SiGrafana,
+  SiPrometheus,
+  SiAmazon,
+  SiGoogle,
 } from "react-icons/si";
-import { FaDatabase } from "react-icons/fa";
+import { FaDatabase, FaBrain, FaCode, FaCloud } from "react-icons/fa";
 
 const skillGroups = [
   {
@@ -20,28 +27,70 @@ const skillGroups = [
       { name: "Docker", icon: <SiDocker /> },
       { name: "GitHub Actions", icon: <SiGithub /> },
       { name: "Terraform", icon: <SiTerraform /> },
+      { name: "CI/CD Pipelines", icon: <FaCode /> },
     ],
   },
   {
-    category: "Data & AI",
+    category: "AI & LLM Systems",
+    skills: [
+      { name: "LangChain", icon: <FaBrain /> },
+      { name: "RAG Architecture", icon: <FaBrain /> },
+      { name: "Prompt Engineering", icon: <FaBrain /> },
+      { name: "OpenAI APIs", icon: <FaBrain /> },
+      { name: "Vector Databases", icon: <FaDatabase /> },
+    ],
+  },
+  {
+    category: "Data & Analytics",
     skills: [
       { name: "Snowflake", icon: <SiSnowflake /> },
       { name: "dbt", icon: <SiDbt /> },
+      { name: "Apache Airflow", icon: <SiApachespark /> },
+      { name: "Apache Spark", icon: <SiApachespark /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "SQL Optimization", icon: <FaDatabase /> },
     ],
   },
   {
-    category: "Backend",
+    category: "Monitoring & Observability",
+    skills: [
+      { name: "Prometheus", icon: <SiPrometheus /> },
+      { name: "Grafana", icon: <SiGrafana /> },
+      { name: "MLflow", icon: <FaBrain /> },
+    ],
+  },
+  {
+    category: "Cloud Platforms",
+    skills: [
+      { name: "AWS (S3, Lambda, EC2, EKS)", icon: <SiAmazon /> },
+      { name: "Azure", icon: <FaCloud /> },
+      { name: "Google Cloud", icon: <SiGoogle /> },
+    ],
+  },
+  {
+    category: "Backend & APIs",
     skills: [
       { name: "FastAPI", icon: <SiFastapi /> },
-      { name: "ASP.NET Web API", icon: <SiDotnet /> },
-      { name: "SQL Server", icon: <FaDatabase /> },
+      { name: "ASP.NET Core", icon: <SiDotnet /> },
+      { name: "GraphQL", icon: <FaCode /> },
+      { name: "REST APIs", icon: <FaCode /> },
+      { name: "Microservices", icon: <FaCode /> },
     ],
   },
   {
     category: "Frontend",
     skills: [
-      { name: "React", icon: <SiReact /> },
+      { name: "React.js", icon: <SiReact /> },
       { name: "Angular", icon: <SiAngular /> },
+      { name: "Responsive Design", icon: <FaCode /> },
+    ],
+  },
+  {
+    category: "Programming Languages",
+    skills: [
+      { name: "Python", icon: <SiPython /> },
+      { name: "JavaScript/TypeScript", icon: <FaCode /> },
+      { name: "SQL", icon: <FaDatabase /> },
     ],
   },
 ];
@@ -61,10 +110,10 @@ export default function TechStack() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12 fade-in-up">
-          Technical Skills
+          Technical Skills & Expertise
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillGroups.map((group, idx) => (
             <div 
               key={idx} 

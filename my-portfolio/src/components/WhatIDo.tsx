@@ -2,24 +2,24 @@ import { FaCloud, FaDatabase, FaBrain, FaCode } from "react-icons/fa";
 
 const services = [
   {
-    title: "Frontend Development",
-    description: "React, Angular, responsive design, modern UI/UX with Tailwind CSS and component architecture.",
-    icon: <FaCode className="text-4xl text-indigo-500" />,
+    title: "AI Data Platform Engineering",
+    description: "Architect production-grade analytics systems integrating Snowflake data warehouses with LLM workflows, semantic layers, and cloud-native infrastructure processing terabyte-scale datasets.",
+    icon: <FaBrain className="text-4xl text-purple-500" />,
   },
   {
-    title: "Backend Development",
-    description: "ASP.NET Core, Node.js, RESTful APIs, database design with SQL Server and MySQL.",
+    title: "MLOps & Cloud Infrastructure",
+    description: "Design and deploy Kubernetes-based platforms with CI/CD automation, Infrastructure-as-Code, monitoring, and scale orchestration for enterprise data and AI workloads.",
     icon: <FaCloud className="text-4xl text-blue-500" />,
   },
   {
-    title: "Cloud & DevOps ",
-    description: "Docker, Azure DevOps, CI/CD pipelines, cloud deployment, infrastructure automation.",
+    title: "Data Engineering & Analytics",
+    description: "Build ETL/ELT pipelines, data models, and analytics-ready architectures using Apache Spark, Airflow, dbt, and semantic modeling for business intelligence.",
     icon: <FaDatabase className="text-4xl text-green-500" />,
   },
   {
-    title: "AI & Data ",
-    description: "LLM systems, data pipelines, analytics-ready architectures, prompt engineering.",
-    icon: <FaBrain className="text-4xl text-purple-500" />,
+    title: "Full Stack Development",
+    description: "Develop scalable REST APIs with FastAPI/ASP.NET Core, responsive frontends with React/Angular, and microservices architecture with secure API gateway patterns.",
+    icon: <FaCode className="text-4xl text-indigo-500" />,
   },
 ];
 
@@ -31,7 +31,7 @@ export default function WhatIDo() {
           My Focus Areas
         </h2>
         <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
-          Full Stack development with growing expertise in cloud & platform engineering
+          Specialized expertise in AI data platforms, MLOps infrastructure, and cloud-native systems architecture
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

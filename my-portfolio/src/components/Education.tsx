@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { FaGraduationCap, FaCertificate, FaCheckCircle } from "react-icons/fa";
+import { FaGraduationCap, FaCertificate, FaCheckCircle, FaBook } from "react-icons/fa";
 
 const education = [
   {
-    degree: "B.Tech in Computer Science",
-    institution: "ANITS, Andhra Pradesh",
+    degree: "B.Tech in Computer Science Engineering",
+    institution: "Andhra University",
     year: "2023",
   },
   {
@@ -20,9 +20,15 @@ const education = [
 ];
 
 const certifications = [
-  { name: "SnowPro Core Certification (In Progress)", badge: false },
-  { name: "AWS Certified Cloud Practitioner (In Progress)", badge: false },
-  { name: "Kubernetes Administrator (CKA) (In Progress)", badge: false },
+  { name: "SnowPro Core Certification", badge: false, status: "In Progress" },
+  { name: "AWS Certified Cloud Practitioner", badge: false, status: "In Progress" },
+  { name: "Kubernetes Administrator (CKA)", badge: false, status: "In Progress" },
+];
+
+const professionalDevelopment = [
+  { name: "MLOps Specialization", provider: "DeepLearning.AI (Coursera)", status: "Completed" },
+  { name: "LLM Engineering: Prompt Engineering & RAG Systems", provider: "Udemy", status: "Completed" },
+  { name: "Kubernetes for Data Engineering", provider: "Linux Foundation", status: "Completed" },
 ];
 
 export default function Education() {
@@ -47,11 +53,11 @@ export default function Education() {
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-white">Education & Certifications</h2>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">My academic background and credentials</p>
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-white">Education, Certifications & Professional Development</h2>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">Academic background, credentials, and continuous learning</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-3 gap-12">
           {/* Education Section */}
           <div>
             <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-6 flex items-center gap-2">
@@ -86,15 +92,35 @@ export default function Education() {
                   key={i}
                   className={`transition duration-700 ease-out transform ${
                     visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                  } bg-white dark:bg-slate-800 p-4 rounded-lg shadow border-l-4 border-purple-500 dark:border-purple-400 flex items-center justify-between card-hover`}
+                  } bg-white dark:bg-slate-800 p-4 rounded-lg shadow border-l-4 border-purple-500 dark:border-purple-400 card-hover`}
                   style={{ transitionDelay: `${i * 150}ms` }}
                 >
-                  <span className="text-gray-800 dark:text-white">{cert.name}</span>
-                  {cert.badge && (
-                    <span className="ml-2 inline-flex items-center gap-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded text-xs font-semibold">
-                      <FaCheckCircle className="text-green-500" /> Verified
-                    </span>
-                  )}
+                  <span className="text-gray-800 dark:text-white font-semibold text-sm">{cert.name}</span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{cert.status}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Professional Development Section */}
+          <div>
+            <h3 className="text-2xl font-semibold text-green-600 dark:text-green-400 mb-6 flex items-center gap-2">
+              <FaBook /> Professional Development
+            </h3>
+            <ul className="space-y-4">
+              {professionalDevelopment.map((course, i) => (
+                <li
+                  key={i}
+                  className={`transition duration-700 ease-out transform ${
+                    visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                  } bg-white dark:bg-slate-800 p-4 rounded-lg shadow border-l-4 border-green-500 dark:border-green-400 card-hover`}
+                  style={{ transitionDelay: `${(i + 3) * 150}ms` }}
+                >
+                  <span className="text-gray-800 dark:text-white font-semibold text-sm">{course.name}</span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{course.provider}</p>
+                  <span className="inline-flex items-center gap-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded text-xs font-semibold mt-2">
+                    <FaCheckCircle className="text-green-500" /> {course.status}
+                  </span>
                 </li>
               ))}
             </ul>

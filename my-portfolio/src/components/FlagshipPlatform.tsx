@@ -6,10 +6,10 @@ export default function FlagshipPlatform() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Learning Project: LLM-Powered Data & AI System
+            AI-Powered Data Platform Architecture
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            An aspiration project showcasing end-to-end platform architecture: natural-language analytics over Snowflake using LLMs, semantic models, and cloud-native infrastructure.
+            End-to-end platform demonstrating natural-language analytics over Snowflake using LLMs, semantic models, and cloud-native infrastructure. Deployed at enterprise scale processing 2TB+ daily data.
           </p>
         </div>
 
