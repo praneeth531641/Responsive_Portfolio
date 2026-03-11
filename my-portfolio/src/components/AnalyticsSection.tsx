@@ -17,6 +17,7 @@ import { TrendingUp, Eye, Users, MessageCircle } from 'lucide-react';
 
 interface MetricsData {
   totalViews: number;
+  uniqueVisitors: number;
   scrollDepth: Record<string, number>;
   sectionsViewed: Record<string, number>;
   aiUsage: number;
@@ -29,35 +30,59 @@ export const AnalyticsSection: React.FC = () => {
   );
   const [metrics, setMetrics] = useState<MetricsData>({
     totalViews: 0,
+    uniqueVisitors: 0,
     scrollDepth: { '25%': 0, '50%': 0, '75%': 0, '100%': 0 },
     sectionsViewed: {},
     aiUsage: 0,
     socialClicks: 0,
   });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [warnings, setWarnings] = useState<string[]>([]);
+  const [days] = useState(30);
 
   useEffect(() => {
-    const loadMetrics = () => {
-      const stored = localStorage.getItem('portfolioMetrics');
-      if (stored) {
-        try {
-          const data = JSON.parse(stored);
-          setMetrics({
-            totalViews: data.totalViews || 0,
-            scrollDepth: data.scrollDepth || { '25%': 0, '50%': 0, '75%': 0, '100%': 0 },
-            sectionsViewed: data.sectionsViewed || {},
-            aiUsage: data.aiUsage || 0,
-            socialClicks: data.socialClicks || 0,
-          });
-        } catch (e) {
-          console.error('Error loading metrics:', e);
+    let isMounted = true;
+
+    const loadMetrics = async () => {
+      try {
+        const response = await fetch(`/api/analytics?days=${days}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data?.details || data?.error || 'Failed to load analytics');
+        }
+
+        if (!isMounted) return;
+
+        setMetrics({
+          totalViews: data.totalViews || 0,
+          uniqueVisitors: data.uniqueVisitors || 0,
+          scrollDepth: data.scrollDepth || { '25%': 0, '50%': 0, '75%': 0, '100%': 0 },
+          sectionsViewed: data.sectionsViewed || {},
+          aiUsage: data.aiUsage || 0,
+          socialClicks: data.socialClicks || 0,
+        });
+        setWarnings(Array.isArray(data.warnings) ? data.warnings : []);
+        setError(null);
+      } catch (e) {
+        if (!isMounted) return;
+        setError(e instanceof Error ? e.message : 'Failed to load analytics');
+      } finally {
+        if (isMounted) {
+          setLoading(false);
         }
       }
     };
 
     loadMetrics();
-    const interval = setInterval(loadMetrics, 3000);
-    return () => clearInterval(interval);
-  }, []);
+    const interval = setInterval(loadMetrics, 60000);
+
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, [days]);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -120,8 +145,30 @@ export const AnalyticsSection: React.FC = () => {
             Portfolio Analytics
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Real-time visitor analytics and engagement metrics powered by Google Analytics
+            Visitor analytics and engagement metrics powered by the Google Analytics Data API
           </p>
+        </div>
+
+        <div className="mb-8 flex flex-col gap-3">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-300">
+            Last {days} days
+          </div>
+          {loading && (
+            <p className="text-sm text-gray-600 dark:text-gray-300">Loading analytics from GA4...</p>
+          )}
+          {error && (
+            <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-300">
+              {error}
+            </p>
+          )}
+          {warnings.map((warning) => (
+            <p
+              key={warning}
+              className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300"
+            >
+              {warning}
+            </p>
+          ))}
         </div>
 
         {/* Key Metrics Cards */}
@@ -138,7 +185,7 @@ export const AnalyticsSection: React.FC = () => {
             <div className="flex items-center justify-between mb-4">
               <Users className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />
               <span className="text-3xl font-bold text-cyan-600 dark:text-cyan-400">
-                {Object.values(metrics.scrollDepth).reduce((a, b) => a + b, 0)}
+                {metrics.uniqueVisitors}
               </span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 text-sm">Unique Visitors</p>

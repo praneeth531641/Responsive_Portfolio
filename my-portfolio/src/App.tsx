@@ -1,4 +1,3 @@
-// App.jsx
 import { useEffect } from "react";
 import Hero from "./components/Hero";
 import WhatIDo from "./components/WhatIDo";
@@ -10,29 +9,18 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import AIAssistant from "./components/AIAssistant";
-import AnalyticsSection from "./components/AnalyticsSection";
-import { useAnalytics } from "./hooks/useAnalytics";
-import { useSectionTracking, trackScrollDepth } from "./components/Analytics";
 
 function App() {
-  // Initialize Google Analytics with your Measurement ID
-  const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || "G-XXXXXXXXXX";
-  useAnalytics(GA_MEASUREMENT_ID);
-  
-  // Track section views and scroll depth
-  useSectionTracking();
-  
   useEffect(() => {
-    // Set page metadata
-    document.title = "Praneeth | AI Data Platform Engineer – MLOps & Cloud Focus";
-    
+    document.title = "Praneeth | AI Data Platform Engineer - MLOps & Cloud Focus";
+
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "AI Data Platform Engineer specializing in Snowflake, Kubernetes, LLMs, and cloud-native architecture. 2.4+ years building production systems at scale.");
+      metaDescription.setAttribute(
+        "content",
+        "AI Data Platform Engineer specializing in Snowflake, Kubernetes, and cloud-native architecture. 2.4+ years building production systems at scale."
+      );
     }
-
-    // Track scroll depth
-    trackScrollDepth();
   }, []);
 
   return (
@@ -40,7 +28,6 @@ function App() {
       <Navbar />
       <AIAssistant />
 
-      {/* Offset to prevent content being hidden behind fixed navbar */}
       <main className="pt-24">
         <Hero />
         <WhatIDo />
@@ -49,7 +36,6 @@ function App() {
           <TechStack />
           <Projects />
           <Experience />
-          <AnalyticsSection />
           <Contact />
         </section>
       </main>
