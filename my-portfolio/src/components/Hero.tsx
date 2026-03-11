@@ -6,54 +6,45 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 to-blue-50 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 py-32 overflow-hidden" id="hero">
-      {/* Light mode background */}
-      <div className="absolute inset-0 light-only pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-200/30 rounded-full blur-3xl float-animation opacity-40"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl float-animation opacity-30" style={{animationDelay: '1s'}}></div>
-      </div>
-
-      {/* Dark mode background */}
-      <div className="absolute inset-0 dark-only pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl float-animation opacity-30"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl float-animation opacity-20" style={{animationDelay: '1s'}}></div>
-      </div>
-
+    <section className="relative py-32 overflow-hidden" id="hero">
       <div className="max-w-5xl mx-auto px-6 relative z-10">
-        <div className="text-center space-y-8 fade-in-up">
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
+        <div className="text-center space-y-8">
+          <div className="space-y-4 title-reveal">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight text-gray-900 dark:text-slate-100">
               AI Data Platform Engineer
             </h1>
             
-            <h2 className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-semibold gradient-text">
               MLOps • Cloud-Native Analytics • Full Stack
             </h2>
           </div>
           
-            <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-slate-300 leading-relaxed slide-up" style={{animationDelay: '0.2s'}}>
             I architect production-grade analytics systems integrating Snowflake data warehouses with modern AI/ML workflows, Kubernetes-based MLOps infrastructure, and REST API microservices.
             </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <a
               href="#flagship"
-              className="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover-lift flex items-center gap-2"
+              className="btn-primary pop-in"
+              style={{animationDelay: '0.3s'}}
             >
               View Architecture
-              <FaArrowDown className="text-sm" />
+              <FaArrowDown className="inline ml-2 text-sm" />
             </a>
 
             <a
               href="#projects"
-              className="border-2 border-indigo-600 dark:border-indigo-400 hover:bg-indigo-600 dark:hover:bg-indigo-600 text-indigo-600 dark:text-indigo-300 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover-lift"
+              className="btn-secondary pop-in"
+              style={{animationDelay: '0.4s'}}
             >
               View Projects
             </a>
 
             <a
               href="#contact"
-              className="bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover-lift border border-gray-200 dark:border-slate-700"
+              className="btn-secondary pop-in"
+              style={{animationDelay: '0.5s'}}
             >
               Contact Me
             </a>
@@ -64,7 +55,7 @@ export default function Hero() {
               href="https://github.com/praneeth531641"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 transition-all duration-300 hover-lift hover:scale-125"
+              className="text-gray-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan transition-all duration-300 hover:scale-125 icon-float"
               title="GitHub"
             >
               <FaGithub />
@@ -73,7 +64,8 @@ export default function Hero() {
               href="https://linkedin.com/in/praneeth-rayavarapu-8602811a3/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 transition-all duration-300 hover-lift hover:scale-125"
+              className="text-gray-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan transition-all duration-300 hover:scale-125 icon-float"
+              style={{animationDelay: '0.5s'}}
               title="LinkedIn"
             >
               <FaLinkedin />

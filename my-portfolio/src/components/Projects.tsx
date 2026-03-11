@@ -49,38 +49,39 @@ const projects = [
 export default function Projects() {
   return (
     <section
-      className="py-20 bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden"
+      className="py-20 relative overflow-hidden"
       id="projects"
     >
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-14">
+        <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-slate-100 mb-14 title-reveal">
           Production Platform Projects
         </h2>
         <div className="space-y-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 group overflow-hidden border-2 border-indigo-200 dark:border-indigo-700/40 shadow-md dark:shadow-lg"
+              className="glass-effect-dark card-hover rounded-2xl p-8 group overflow-hidden fade-in-up bg-white dark:bg-slate-800 border border-gray-200 dark:border-cyan/30"
+              style={{animationDelay: `${0.1 * index}s`}}
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 relative z-10">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-purple-700 dark:from-indigo-300 dark:to-purple-300 mb-2 group-hover:to-purple-600 transition">
+                  <h3 className="text-2xl font-bold gradient-text mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mb-1 tracking-wide uppercase opacity-90">
+                  <p className="text-sm font-semibold text-blue-600 dark:text-cyan mb-1 tracking-wide uppercase opacity-90">
                     {project.ownership}
                   </p>
                   {(project as any).impact && (
-                    <p className="text-xs font-semibold text-green-600 dark:text-green-400 mb-3 tracking-wide uppercase opacity-85">
+                    <p className="text-xs font-semibold text-green-600 dark:text-green-400 mb-3 tracking-wide uppercase opacity-85 scale-pulse" style={{animationDelay: `${0.1 * index + 0.5}s`}}>
                       📊 Impact: {(project as any).impact}
                     </p>
                   )}
-                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                  <p className="text-gray-700 dark:text-slate-300 mb-4 leading-relaxed text-sm">
                     {project.description}
                   </p>
-                  <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1.5 mb-4">
+                  <ul className="list-disc list-inside text-sm text-gray-600 dark:text-slate-400 space-y-1.5 mb-4">
                     {project.features.map((feature, i) => (
-                      <li key={i} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition">{feature}</li>
+                      <li key={i} className="hover:text-blue-600 dark:hover:text-cyan transition">{feature}</li>
                     ))}
                   </ul>
                 </div>
@@ -90,7 +91,8 @@ export default function Projects() {
                 {project.stack.map((tech, i) => (
                   <span
                     key={i}
-                    className="premium-chip text-gray-800 dark:text-indigo-100 text-xs px-3 py-1.5 rounded-lg font-medium"
+                    className="premium-chip text-xs px-3 py-1.5 rounded-lg font-medium pop-in"
+                    style={{animationDelay: `${0.05 * i}s`}}
                   >
                     {tech}
                   </span>

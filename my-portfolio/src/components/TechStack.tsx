@@ -97,19 +97,9 @@ const skillGroups = [
 
 export default function TechStack() {
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden" id="tech">
-      {/* Light mode background */}
-      <div className="absolute inset-0 light-only pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-100/60 rounded-full blur-3xl opacity-40 float-animation"></div>
-      </div>
-
-      {/* Dark mode background */}
-      <div className="absolute inset-0 dark-only pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-900/30 rounded-full blur-3xl opacity-40 float-animation"></div>
-      </div>
-
+    <section className="py-20 relative overflow-hidden" id="tech">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12 fade-in-up">
+        <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-slate-100 mb-12 title-reveal">
           Technical Skills & Expertise
         </h2>
 
@@ -117,17 +107,18 @@ export default function TechStack() {
           {skillGroups.map((group, idx) => (
             <div 
               key={idx} 
-              className="bg-white dark:bg-slate-800 rounded-2xl shadow-md dark:shadow-lg hover:shadow-xl dark:hover:shadow-xl p-8 transition-all duration-300 card-hover fade-in-up border-2 border-indigo-200 dark:border-indigo-700/40"
+              className="glass-effect-dark rounded-2xl p-8 card-hover fade-in-up bg-white dark:bg-slate-800 border border-gray-200 dark:border-cyan/30"
               style={{animationDelay: `${idx * 0.1}s`}}
             >
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 pb-3 border-b-2 border-indigo-400 dark:border-indigo-600">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-6 pb-3 border-b-2 border-blue-600 dark:border-cyan">
                 {group.category}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {group.skills.map((skill, i) => (
                   <div
                     key={i}
-                    className="premium-chip flex items-center gap-2 text-gray-800 dark:text-indigo-100 px-4 py-2.5 rounded-xl font-medium text-sm"
+                    className="premium-chip flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm icon-float pop-in"
+                    style={{animationDelay: `${(idx * 0.1) + (i * 0.05)}s`}}
                   >
                     <span className="text-lg">{skill.icon}</span>
                     <span>{skill.name}</span>
